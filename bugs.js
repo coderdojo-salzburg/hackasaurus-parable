@@ -20,7 +20,7 @@ var bugs = {
   },
   curtain: {
     isFixed: function isCurtainRemoved(context) {
-      return $(".curtain", context).length == 0;
+      return $(".vorhang", context).length == 0;
     },
     achievement: "#deleter.achievement"
   },
@@ -50,7 +50,7 @@ var bugHints = [
     when: {
       // A selector that the focused element in the goggles
       // must match in order for the hint to be displayed.
-      matches: ".curtain",
+      matches: ".vorhang",
       // A bug that must not yet be fixed in order for the
       // hint to be displayed.
       notFixed: bugs.curtain
