@@ -18,19 +18,15 @@ var bugs = (function() {
             "recipient": email,
             "badge": {
               "version": "0.0.1",
-              "name": "Web Navigator",
+              "name": "Navigieren im Web",
               "image": $("#badge")[0].src,
-              "description": "Can operate a Web browser with celerity.",
+              "description": "Kann mit einem Web Browser sicher und zielgerichtet surfen.",
               "criteria": baseURI,
               "issuer": {
-                // TODO: The 'origin' isn't checked right now,
-                // so we will take advantage of this to use an
-                // authoritative domain that's good for
-                // demo purposes.
-                "origin": "http://navigator-badge.hackasaurus.org/",
-                "name": "Hackasaurus",
-                "org": "Experimental Badge Authority",
-                "contact": "rawr@hksr.us"
+                "origin": "http://coderdojo-salzburg.at/",
+                "name": "CoderDojo Salzburg",
+                "org": "CoderDojo Salzburg",
+                "contact": "badges@coderdojo-salzburg.at"
               }
             }
           }
@@ -38,7 +34,7 @@ var bugs = (function() {
         $("#win form").fadeOut(function() {
           $("#throbber").fadeIn(function() {
             publish.fail(function() {
-              alert("Sorry, an error occurred. Please try again later.");
+              alert("Hoppala, da ist ein Fehler aufgetreten, probier es später nochmal.");
               $("#win form").show();
               $("#throbber").hide();
             });
@@ -58,7 +54,7 @@ var bugs = (function() {
           });
         });
       } else
-        alert("Please provide a valid e-mail address.");
+        alert("Diese E-Mail Adresse schaut nicht gut aus - bitte gib eine richtige E-Mail ein.");
       return false;
     });
   }
