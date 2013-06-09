@@ -6,7 +6,8 @@ var bugs = (function() {
   var earned = 0;
   
   function win() {
-    $("#challenge").hide();
+    $('html').scrollTop( $('#badge').offset().top );
+    $(".help").hide();
     $("#win").fadeIn();
     $("#win form").submit(function() {
       var email = $(this).find("input#email").val().trim();
@@ -72,15 +73,6 @@ var bugs = (function() {
   //setTimeout(win, 1000);
   
   return {
-    addressBarHacker: {
-      isFixed: function() {
-        return (window.location.hash.indexOf($("#secret-hash").text()) != -1);
-      },
-      achievement: "#address-bar-hacker",
-      onAchieved: achieve(function() {
-        $("#secret-hash").parent().slideUp();
-      })
-    },
     selecter: {
       isFixed: function() {
         var selObj = window.getSelection();
@@ -92,7 +84,10 @@ var bugs = (function() {
         }
         return false;
       },
-      achievement: "#selecter"
+      achievement: "#selecter",
+      onAchieved: achieve(function() {
+        console.log("achieved selecter");
+      })
     },
     paster: {
       isFixed: function() {
@@ -100,17 +95,27 @@ var bugs = (function() {
       },
       achievement: "#paster",
       onAchieved: achieve(function() {
-        $("#paster-field").parent().slideUp();
-        $("#select-me").slideUp();
+        console.log("achieved");
+        // $("#paster-field").parent().slideUp();
+        // $("#select-me").slideUp();
       })
     },
     massivePaster: {
       isFixed: function() {
-        return ($("#massive-paster-field").val() == $("#massive").val());
+        return ($("#massive-paster-field").val() == $("#massive").text());
       },
       achievement: "#massive-paster",
       onAchieved: achieve(function() {
         $("#massive-challenge").slideUp();
+      })
+    },
+    addressBarHacker: {
+      isFixed: function() {
+        return (window.location.hash.indexOf($("#secret-hash").text()) != -1);
+      },
+      achievement: "#address-bar-hacker",
+      onAchieved: achieve(function() {
+        $("#du_kannst_surfen").show();
       })
     },
     linker: {
@@ -119,7 +124,8 @@ var bugs = (function() {
       },
       achievement: "#linker",
       onAchieved: achieve(function() {
-        $("#linker-field").parent().slideUp();
+        console.log("achieved linker");
+        // $("#linker-field").parent().slideUp();
       })
     }
   };

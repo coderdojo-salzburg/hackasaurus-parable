@@ -1,10 +1,24 @@
+html, body {
+  font-family: Baskerville, Georgia, serif;
+  width: 640px;
+  margin: 0 auto;
+  padding-top: 1em;
+  font-size: 19px;
+  line-height: 130%;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
 /* Achievements */
 
 .achievement {
   display: none;
   position: fixed;
-  left: 0px;
-  bottom: 0px;
+  right: 0px;
+  top: 0px;
   font-family: "Helvetica Neue", Helvetica;
   font-weight: bold;
   font-size: bigger;
@@ -27,31 +41,6 @@
   margin: 0;
   padding: 0;
   font-size: 24pt;
-}
-
-/* The goggles bookmarklet */
-
-a#bookmarklet {
-  padding-left: 32px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-right: 6px;
-  color: black;
-  border: 1px dotted gray;
-  text-decoration: none;
-  background-image: url(images/icon-goggles-tiny.png);
-  background-repeat: no-repeat;
-  background-position: 5px 4px;
-}
-
-a#bookmarklet:hover {
-  background-color: #f0f0f0;
-}
-
-a#bookmarklet.loading {
-  background-image: url(images/throbber.gif);
-  background-position: 8px 6px;
-  background-color: #f0f0f0;
 }
 
 /* The help bar at the top of the page */
@@ -77,18 +66,13 @@ div.help .remaining {
   font-weight: bold;
 }
 
-/* The parable story */
+/* The story, the text we're working on */
 
-html, body {
-  font-family: Baskerville, Georgia, serif;
-  width: 640px;
-  margin: 0 auto;
-  padding-top: 1em;
-}
-
-h1 {
-  font-weight: normal;
-  text-align: center;
+.story {
+  font-size: 20px;
+  padding: 20px;
+  border: 2px #ddd solid;
+  box-shadow: 10px 10px 5px #888;
 }
 
 div.drop-cap {
@@ -98,23 +82,17 @@ div.drop-cap {
   float: right;
 }
 
-img#hackasaur {
-  width: 400px;
-  height: 300px;
-}
-
-img#supergirl {
-  width: 300px;
-  height: 330px;
-}
-
 .image-holder {
   text-align: center;
 }
 
-.vorhang {
-  position: absolute;
-  width: 640px;
-  height: 250px;
-  background-color: white;
+/* The explanation */
+
+.explanation {
+  font-family: sans-serif;
+  padding: 20px 40px;
+}
+
+.explanation li {
+  margin-bottom: 20px;
 }

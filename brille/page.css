@@ -1,0 +1,45 @@
+/* The goggles bookmarklet */
+
+a#bookmarklet {
+  padding-left: 32px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+  color: black;
+  border: 1px dotted gray;
+  text-decoration: none;
+  background-image: url(images/icon-goggles-tiny.png);
+  background-repeat: no-repeat;
+  background-position: 5px 4px;
+}
+
+a#bookmarklet:hover {
+  background-color: #f0f0f0;
+}
+
+a#bookmarklet.loading {
+  background-image: url(images/throbber.gif);
+  background-position: 8px 6px;
+  background-color: #f0f0f0;
+}
+
+/* The story, the text we're working on */
+
+img#hackasaur {
+  width: 400px;
+  height: 300px;
+}
+
+.for-supergirl {
+  width: 300px;
+  height: 330px;
+}
+
+.vorhang {
+  position: absolute;
+  width: 560px;
+  height: 250px;
+  background-color: white;
+}
+
+

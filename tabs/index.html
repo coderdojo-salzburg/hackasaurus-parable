@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title></title>
+<title>Hackasaurus: Tabs, Tabs, Tabs</title>
 <style>
 html, body {
   font-family: Baskerville, Georgia, serif;
@@ -91,6 +91,7 @@ $(window).ready(function() {
     if (window.location.hash == "#yay")
       window.location.hash = "";
   }
+  console.log("visiting " + pageName);
   section.show();
 
   maybeResetStorage();
@@ -151,12 +152,13 @@ $(window).ready(function() {
         if (isFocused) {
           document.title = "you win!";
           $("#win").fadeIn();
-        } else
+        } else 
           invalidate();
       } else {
         if (isFocused && section.find(".keep-going").length == 0) {
           var feedback = $("#templates .keep-going").clone();
           section.append(feedback);
+          feedback.append('your path is ' + path);
           feedback.hide().fadeIn("slow");
         }
       }
@@ -188,40 +190,40 @@ $(window).ready(function() {
 });
 </script>
 <section id="main">
-  <h1>Challenge!</h1>
-  <p>Can you visit each of the following pages, in order, without coming back to this one?</p>
+  <h1>Wie schnell bist Du?</h1>
+  <p>Kannst Du die folgenden Seiten ganz schnell besuchen, der Reihe nach, ohne auf diese Seite zurück zu kommen?</p>
   <ul>
-    <li><a href="?page=1">eenie</a></li>
-    <li><a href="?page=2">meenie</a></li>
-    <li><a href="?page=3">miney</a></li>
-    <li><a href="?page=4">moe</a></li>    
+    <li><a href="?page=1">Salzburg</a></li>
+    <li><a href="?page=2">Linz</a></li>
+    <li><a href="?page=3">St.Pölten</a></li>
+    <li><a href="?page=4">Wien</a></li>    
   </ul>
-  <p><em>Hint:</em> Use <a href="http://support.mozilla.com/en-US/kb/Tabbed%20browsing?s=tabs&r=1&as=s">tabbed browsing</a>!</p>
-  <div id="reset">reset this challenge</div>
-  <p>Time elapsed: <span class="time"></span>s</p>
+  <p>Tipp: mach die Seiten in neuen Tabs auf, und blättere Sie dann durch</p>
+  <div id="reset">Neu starten</div>
+  <p>Zeit: <span class="time"></span>s</p>
   <img id="throbber" src="ajax-loader.gif" style="display: none">
 </section>
 <section id="page-1">
-  <h1>catch a</h1>
+  <h1>Salzburg</h1>
 </section>
 <section id="page-2">
-  <h1>tiger</h1>
+  <h1>Linz</h1>
 </section>
 <section id="page-3">
-  <h1>by its</h1>
+  <h1>St.Pölten</h1>
 </section>
 <section id="page-4">
-  <h1>toe</h1>
+  <h1>Wien</h1>
 </section>
 <section id="close-me">
-  <h1>Please close this page.</h1>
+  <h1>Bitte mach diese Seite zu.</h1>
 </section>
 <section id="win">
-  <h1>eenie meenie miney moe, catch a tiger by its toe</h1>
-  <p>You completed the challenge in <span class="time"></span> seconds! You are cool.</p>
-  <p>Want to <a href="?">try for a better time</a>?</p>
+  <h1>Gewonnen!</h1>
+  <p>Du hast die Aufgabe in <span class="time"></span> Sekunden geschafft! Sehr cool.</p>
+  <p>Wilst Du's nochmal versuchen, und <a href="?">schneller sein</a>?</p>
 </section>
 <div id="visits" style="display: none"></div>
 <div id="templates" style="display: none">
-  <div class="keep-going">Good, keep going!</div>
+  <div class="keep-going">Gut, weiter so!</div>
 </div>
