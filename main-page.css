@@ -1,10 +1,14 @@
 html, body {
   font-family: Baskerville, Georgia, serif;
   width: 640px;
-  margin: 0 auto;
+  margin: 0 auto 100px auto;
   padding-top: 1em;
   font-size: 19px;
   line-height: 130%;
+}
+
+#win {
+  margin-top: 100px;
 }
 
 h1 {

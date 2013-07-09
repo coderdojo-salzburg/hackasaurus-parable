@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+  <meta charset="utf-8">
+  <title>Kennst Du am Computer Text tippen und verändern? Hol Dir Dein Abzeichen hier!</title>
+  <link rel="stylesheet" href="../main-page.css">
+  <style>
+    .story.done, .story.done:focus {
+      background-color: #D1F17C;
+    }
+
+    #typer_input.done {
+      background-image: url(../brille/images/hackasaur.jpg);
+      background-size: contain;
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
+
+    #upper_lower_input p {text-align:right;}
+    .story {
+      background-color: #ddd;
+    }
+    .story:focus {
+      background-color: #ddf;
+    }
+
+    p {
+      clear: both;
+    }
+
+    #challenge input {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px dotted gray;
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    #supergirl {
+      float: right;
+    }
+
+    textarea {
+      width: 100%;
+      border: 1px solid gray;
+      color: gray;
+    }
+
+    #win {
+      text-align: center;
+    }
+
+    #badge {
+      padding-top: 50px;
+      padding-bottom: 40px;
+    }
+
+    #win input {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: large;
+      border: 1px solid gray;
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    #win input#submit {
+      width: 30%;
+      cursor: pointer;
+    }
+
+    #win input#submit:hover {
+      color: white;
+      background: darkgreen;
+    }
+
+    #win input#email {
+      width: 50%;
+    }
+  </style>
+  <script src="../jquery.min.js"></script>
+  <script src="bugs.js"></script>
+  <script src="../main-page.js"></script>
+  <script src="quickbadge.js"></script>
+  <script src="http://beta.openbadges.org/issuer.js"></script>
+  <script>
+  $(window).ready(function() {
+    $("#upper, #upper_lower, #lower, #output_name").val('');
+
+    var removeme = $('#todelete').text();
+    window.the_text_after_deletions = $('#delete_from_this').text().replace( new RegExp(removeme, "gi"), '' ).replace(/\s+/g, ' ');
+    var bugDisplay = BugDisplay(bugs);
+
+    setInterval(function() {
+      bugDisplay.update();
+    }, 100);
+  });
+  </script>
+
+  <!-- For development, try loading the issuer API from the dev server. If 
+       it fails, we'll just use the non-development issuer API from the
+       script tag above. -->
+  <script src="http://localhost:8888/issuer.js"></script>
+
+  <!-- The help bar at the top of the page. -->
+
+  <div class="help">
+    <span class="not-done">Da <span class="singular">ist</span><span class="plural">sind</span> noch <span class="remaining"></span> Aufgabe<span class="plural">n</span> zu erledigen</span>
+    <span class="done">Bravo, alle Aufgaben erledigt! Du kriegst das Abzeichen für die Tastatur!</span>
+  </div>
+
+  <!-- Achievements awarded to users when they fix bugs. -->
+
+  <div class="achievements">
+    <div id="typer" class="achievement">
+      <h3>Achievement Unlocked</h3>
+      <p>Ich kann Text eintippen</p>
+    </div>
+    <div id="casemaster" class="achievement">
+      <h3>Achievement Unlocked</h3>
+      <p>Ich kann Kleinbuchstaben und Großbuchstaben</p>
+    </div>
+    <div id="deleter" class="achievement">
+      <h3>Achievement Unlocked</h3>
+      <p>Ich kann Text löschen</p>
+    </div>
+    <div id="massive-paster" class="achievement">
+      <h3>Achievement Unlocked</h3>
+      <p>Ich kann massig Zeug kopieren</p>
+    </div>
+    <div id="linker" class="achievement">
+      <h3>Achievement Unlocked</h3>
+      <p>Ich kann linken</p>
+    </div>  
+  </div>
+
+  <!-- Main page. -->
+  <div id="challenge">
+  <h1>Navigieren im Web</h1>
+
+  <div class="explanation">
+    <p>Kennst du Text eintippen und verändern? Dann beweise es!</p>
+
+    <p>Klicke mit der Maus in die folgende Geschichte. Hier fehlt
+    der Anfang!  Schreibe 
+    “<span id="totype">es war einmal</span>” </p>
+  </div>
+
+  <div class="story" contenteditable id="typer_input">
+    ein Dinosaurier namens Hackasaurus. 
+  </div>
+
+  <div class="explanation">
+    <p>Kannst du große und kleine Buchstaben schreiben? Dann
+    schreibe deinen Namen in die folgenden drei Felder: </p>
+  </div>
+    
+  <div class="story" contenteditable id="upper_lower_input">
+    <h2>Hallo Hackasaurus, ich heiße ...</h2>
+    <p>in Kleinbuchstaben: <input type="text" id="lower"></p>
+    <p>mit einem Großbuchstaben am Anfang: <input type="text" id="upper_lower"></p>
+    <p>in Großbuchstaben: <input type="text" id="upper"></p>
+  </div>
+
+  <div class="explanation">
+    <p>Hackasaurus ist nicht so gut beim schreiben, er schreibt
+    oft unnötige Wörter. Kannst Du den nächsten Text reparieren?
+    Er hat ganz oft “<span id="todelete">Dings</span>” geschrieben. 
+    Bitte lösch das weg - aber lass den Rest vom Text übrig!</p>
+  </div>
+
+  <div class="story" contenteditable id="delete_from_this">
+    <p>Wenn der Dings Computer ans Internet Dings
+    angeschlossen ist, dann kannst du im Web Dings surfen.
+    Das hat nichts mit Wasser Dings und Meer Dings zu tun,
+    sondern heisst einfach nur: Du kannst dir Dings Webseiten ansehen. 
+    </p>
+  </div>
+
+  <div id="win" style="display: none; clear:both;">
+    <h1>Abzeichen</h1>
+    <img src="editor-badge.png" id="badge">
+    <p><span id="output_name">Niemand</span> kann Text eintippen und editieren.</p>
+    <!--
+    <p>Gratuliere! 
+      <span class="instructions">Wenn Du dieses Abzeichen veröffentlichen willst, kannnst Du es im "backpack", dem Rucksack für Abzeichen speicher:</span>
+    </p>
+    <form>
+      <input type="text" id="email" placeholder="E-mail Address">
+      <input type="submit" value="Send To Backpack »" id="submit">
+    </form>
+    -->
+  </div>
+</body>
+</html>
