@@ -60,6 +60,10 @@ textarea {
 #win input#email {
   width: 50%;
 }
+
+#linker-field, #url-paster-field {
+width: 100%;
+}
 </style>
 <script src="../jquery.min.js"></script>
 <script src="bugs.js"></script>
@@ -68,7 +72,7 @@ textarea {
 <script src="http://beta.openbadges.org/issuer.js"></script>
 <script>
 $(window).ready(function() {
-  $("#paster-field, #linker-field, #massive-paster-field").val('');
+  $("#paster-field, #url-paster-field, #linker-field, #massive-paster-field").val('');
   $("#massive").val($("#massive").text());
   window.location.hash = "";
   
@@ -97,7 +101,7 @@ $(window).ready(function() {
 <div class="achievements">
   <div id="address-bar-hacker" class="achievement">
     <h3>Achievement Unlocked</h3>
-    <p>Ich kann die Adresse hacken</p>
+    <p>Ich kann die Adresse einer Webseite finden</p>
   </div>
   <div id="selecter" class="achievement">
     <h3>Achievement Unlocked</h3>
@@ -113,7 +117,7 @@ $(window).ready(function() {
   </div>
   <div id="linker" class="achievement">
     <h3>Achievement Unlocked</h3>
-    <p>Ich kann linken</p>
+    <p>Ich kann die Adresse eines Bildes am Web finden</p>
   </div>  
 </div>
 
@@ -122,19 +126,18 @@ $(window).ready(function() {
 <h1>Navigieren im Web</h1>
 
 <div class="explanation">
-  <p>Kannst Du schon wie ein Profi im Web surfen? Dann beweise es!</p>
 
-  <p> Wähle in folgendem Text den Namen des Dinosauriers mit der Maus aus. 
-  Das nennt man auch “Selektieren” </p>
+  <p>Klicke in diesem Text den Namen des Dinosauriers mit der Maus an. 
+  Das nennt man “Auswählen”. (Tipp: du kannst das auch mit einem  “Doppelklick” machen!)</p>
 </div>
 
 <div class="story">
-  <p>Es war einmal ein Dinosaurier namens <span id="select-me">Hackasaurus</span>. Er
-  war mit einem Mädchen befreundet, sie hiess Susi.</p>
+  <p>Es war einmal ein Dinosaurier namens <span id="select-me">Hackasaurus</span>.
+  </p>
 </div>
 
 <div class="explanation">
-  <p>Dann kopier den Namen des Dinosauriers in das Eingabefeld:</p>
+  <p>Dann nimm den Namen des Dinosauriers, kopiere ihn (drücke STRG und C) und füge ihn in das Eingabefeld ein (drücke STRG und V):</p>
 </div>
   
 <div class="story">
@@ -142,7 +145,7 @@ $(window).ready(function() {
 </div>
 
 <div class="explanation">
-  <p>Jetzt kopier den ganzen Text über die Jedis in das grosse Eingabefeld darunter:</p>
+  <p>Jetzt kopier den ganzen Text über die Jedis in das große Eingabefeld darunter:</p>
 </div>
 
 <div class="story">
@@ -153,8 +156,12 @@ $(window).ready(function() {
 </div>
 
 <div class="explanation">
-  <p>Siehst Du die Adresse dieser Seite oben im Browser-Fenster?  Du sollst die Adresse ändern: füge an die 
-  Adresse dieser Seite <code id="secret-hash">#ich_kann_surfen</code> an, und drück die RETURN Taste.</p>
+  <p>Jede Webseite hat eine Adresse. Siehst Du die Adresse dieser Seite ganz oben in diesem Fenster?  Kopiere
+  sie!
+</div>
+<div class="story">
+  <p>Die Adresse dieser Webseite ist <br>
+  <input type="text" id="url-paster-field"></p>
 </div>
 
 <div id="du_kannst_surfen" class="story" style="display:none;">
@@ -162,8 +169,10 @@ $(window).ready(function() {
 </div>
 
 <div class="explanation">
-  <p>Und nun die schwierigste Übung: Sieht Du das Bild von Susi unten? Sie trägt die
-  Röngten-Brille. Kopiere <b>die Adresse des Bildes</b> in das Feld unter dem Bild hier hinein: <input type="text" id="linker-field"></p>
+  <p>Und nun die schwierigste Übung: Sieht Du das Bild von Susi unten? Jedes
+  Bild am Web hat eine eigene Adresse.  Wie kann man die Adresse raus finden?
+  Zeige mit der Maus auf das Bild und drücke dann die rechte Maustaste.
+  </p>
 </div>
 
 <div class="story">
@@ -171,6 +180,12 @@ $(window).ready(function() {
   <img src="http://hackasaurus.org/images/goggles/supergirl.png" id="supergirl">
   Susi surft durchs Web. Mit ihrer Röngten-Brille kann sie alles durchschauen!
   </p>
+  <p style="clear:both;">&nbsp;</p>
+</div>
+
+<div class="explanation">
+  <p>Kopiere <b>die Adresse des Bildes</b> in das Feld hier hinein: <br>
+  <input type="text" id="linker-field"></p>
 </div>
 
     <div id="win" style="display: none; clear:both;">

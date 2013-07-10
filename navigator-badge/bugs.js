@@ -111,11 +111,10 @@ var bugs = (function() {
     },
     addressBarHacker: {
       isFixed: function() {
-        return (window.location.hash.indexOf($("#secret-hash").text()) != -1);
+        return (window.location == $('#url-paster-field').val());
       },
       achievement: "#address-bar-hacker",
       onAchieved: achieve(function() {
-        $("#du_kannst_surfen").show();
       })
     },
     linker: {
