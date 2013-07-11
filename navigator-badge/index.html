@@ -2,91 +2,161 @@
 <meta charset="utf-8">
 <title>Kannst Du Navigieren im Web? Hol Dir Dein Abzeichen hier!</title>
 <link rel="stylesheet" href="../main-page.css">
+<link rel="stylesheet" href="../hints.css">
 <style>
-p {
-  clear: both;
-}
+  p {
+    clear: both;
+  }
 
-#challenge input {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px dotted gray;
-  font-family: inherit;
-  font-size: inherit;
-}
+  #challenge input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px dotted gray;
+    font-family: inherit;
+    font-size: inherit;
+  }
 
-a {
-  color: inherit;
-}
+  a {
+    color: inherit;
+  }
 
-#supergirl {
-  float: right;
-}
+  #supergirl {
+    float: right;
+  }
 
-textarea {
-  width: 100%;
-  border: 1px solid gray;
-  color: gray;
-}
+  textarea {
+    width: 100%;
+    border: 1px solid gray;
+    color: gray;
+  }
 
-#win {
-  text-align: center;
-}
+  #win {
+    text-align: center;
+  }
 
-#badge {
-  padding-top: 50px;
-  padding-bottom: 40px;
-}
+  #badge {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
 
-#win input {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: large;
-  border: 1px solid gray;
-  border-radius: 4px;
-  padding: 4px;
-}
+  #win input {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: large;
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 4px;
+  }
 
-#win input#submit {
-  width: 30%;
-  cursor: pointer;
-}
+  #win input#submit {
+    width: 30%;
+    cursor: pointer;
+  }
 
-#win input#submit:hover {
-  color: white;
-  background: darkgreen;
-}
+  #win input#submit:hover {
+    color: white;
+    background: darkgreen;
+  }
 
-#win input#email {
-  width: 50%;
-}
+  #win input#email {
+    width: 50%;
+  }
 
-#linker-field, #url-paster-field {
-width: 100%;
-}
+  #linker-field, #url-paster-field {
+    width: 100%;
+  }
+  .ui-tooltip, .tooltip-arrow:after {
+    background: black;
+    border: 2px solid white;
+  }
+  .ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font-size: 8px;
+    box-shadow: 10px 10px 5px #888888;
+  }
+  .tooltip-arrow {
+    width: 70px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+  }
+  .tooltip-arrow.top {
+    top: -16px;
+    bottom: auto;
+  }
+  .tooltip-arrow.left {
+    left: 20%;
+  }
+  .tooltip-arrow:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 6px 5px 9px -9px black;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    tranform: rotate(45deg);
+  }
+  .tooltip-arrow.top:after {
+    bottom: -20px;
+    top: auto;
+  }
 </style>
-<script src="../jquery.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="bugs.js"></script>
-<script src="../main-page.js"></script>
-<script src="quickbadge.js"></script>
-<script src="http://beta.openbadges.org/issuer.js"></script>
+<script src="../main-page.js">
+<noscript src="quickbadge.js">
+<noscript src="http://beta.openbadges.org/issuer.js"></script>
 <script>
 $(window).ready(function() {
   $("#paster-field, #url-paster-field, #linker-field, #massive-paster-field").val('');
   $("#massive").val($("#massive").text());
-  window.location.hash = "";
-  
-  var bugDisplay = BugDisplay(bugs);
+  $( document ).tooltip({
+    position: {
+      my: "center bottom-10",
+      at: "center top",
+      using: function( position, feedback ) {
+        $( this ).css( position );
+        $( "<div>" )
+          .addClass( "tooltip-arrow" )
+          .addClass( feedback.vertical )
+          .addClass( feedback.horizontal )
+          .appendTo( this );
+        }
+      }
+    });
 
-  setInterval(function() {
-    bugDisplay.update();
-  }, 100);
-});
+    if (navigator.platform.match(/^Mac/)) {
+      $(".non-mac").hide();
+      } else {
+      $(".mac").hide();
+    }
+
+
+    window.location.hash = "";
+
+    var bugDisplay = BugDisplay(bugs);
+
+    setInterval(function() {
+      bugDisplay.update();
+    }, 100);
+  });
 </script>
 
 <!-- For development, try loading the issuer API from the dev server. If 
-     it fails, we'll just use the non-development issuer API from the
-     script tag above. -->
+it fails, we'll just use the non-development issuer API from the
+script tag above. -->
 <script src="http://localhost:8888/issuer.js"></script>
 
 <!-- The help bar at the top of the page. -->
@@ -121,85 +191,91 @@ $(window).ready(function() {
   </div>  
 </div>
 
+
 <!-- Main page. -->
 <div id="challenge">
-<h1>Navigieren im Web</h1>
+  <h1>Navigieren im Web</h1>
 
-<div class="explanation">
+  <div class="explanation">
 
-  <p>Klicke in diesem Text den Namen des Dinosauriers mit der Maus an. 
-  Das nennt man “Auswählen”. (Tipp: du kannst das auch mit einem  “Doppelklick” machen!)</p>
-</div>
+    <p>Klicke in diesem Text den Namen des Dinosauriers mit der Maus an. 
+    Das nennt man “Auswählen”.</p>
+  </div>
 
-<div class="story">
-  <p>Es war einmal ein Dinosaurier namens <span id="select-me">Hackasaurus</span>.
-  </p>
-</div>
+  <div class="hackasaurus-story story" title="du kannst das auch mit einem  “Doppelklick” machen!">
+    <p>Es war einmal ein Dinosaurier namens <span id="select-me">Hackasaurus</span>.
+    </p>
 
-<div class="explanation">
-  <p>Dann nimm den Namen des Dinosauriers, kopiere ihn (drücke STRG und C) und füge ihn in das Eingabefeld ein (drücke STRG und V):</p>
-</div>
-  
-<div class="story">
-  <p>Sein Name ist <input type="text" id="paster-field"></p>
-</div>
+  </div>
 
-<div class="explanation">
-  <p>Jetzt kopier den ganzen Text über die Jedis in das große Eingabefeld darunter:</p>
-</div>
+  <div class="explanation">
+    <div class="visible-hint">Drücke <kbd class="mac">cmd &#8984;</kbd><kbd class="non-mac">STRG</kbd> und <kbd>C</kbd> um den ausgewählten Text zu Kopieren</div>
+    <div class="visible-hint">Drücke <kbd class="mac">cmd &#8984;</kbd><kbd class="non-mac">STRG</kbd> und <kbd>V</kbd> um ihn wo anders einzufügen</div>
+    <p>Dann nimm den Namen des Dinosauriers, und kopiere ihn in die nächste Geschichte:
+    </p>
+  </div>
 
-<div class="story">
-  <p id="massive">Die Jedi und ihre Erz-Antagonisten, die Sith, sind Gruppen fiktiver Figuren des von George Lucas geprägten Star-Wars-Universums. Ihre wichtigsten Merkmale sind die Kontrolle einer fiktiven Kraft, der Macht (im Original Force), die ihnen übermenschliche Fähigkeiten verleiht, sowie der Einsatz von „Lichtschwert“ genannten Hieb- und Stichwaffen.</p>
+  <div class="story">
+    <p>Sein Name ist <input type="text" id="paster-field"></p>
+  </div>
 
-  <p>Kopie des ganzen Textes:</p>
-  <textarea id="massive-paster-field" rows="8"></textarea>
-</div>
+  <div class="explanation">
+    <p>Jetzt kopier den ganzen Text über die Jedis in das große Eingabefeld darunter:</p>
+  </div>
 
-<div class="explanation">
-  <p>Jede Webseite hat eine Adresse. Siehst Du die Adresse dieser Seite ganz oben in diesem Fenster?  Kopiere
-  sie!
-</div>
-<div class="story">
-  <p>Die Adresse dieser Webseite ist <br>
-  <input type="text" id="url-paster-field"></p>
-</div>
+  <div class="story">
+    <p id="massive">Die Jedi und ihre Erz-Antagonisten, die Sith, sind Gruppen fiktiver Figuren des von George Lucas geprägten Star-Wars-Universums. Ihre wichtigsten Merkmale sind die Kontrolle einer fiktiven Kraft, der Macht (im Original Force), die ihnen übermenschliche Fähigkeiten verleiht, sowie der Einsatz von „Lichtschwert“ genannten Hieb- und Stichwaffen.</p>
 
-<div id="du_kannst_surfen" class="story" style="display:none;">
-  <p>Es war einmal ein junger Padawan, der konnte sehr gut surfen.</p>
-</div>
+    <p>Kopie des ganzen Textes:</p>
+    <textarea id="massive-paster-field" rows="8"></textarea>
+  </div>
 
-<div class="explanation">
-  <p>Und nun die schwierigste Übung: Sieht Du das Bild von Susi unten? Jedes
-  Bild am Web hat eine eigene Adresse.  Wie kann man die Adresse raus finden?
-  Zeige mit der Maus auf das Bild und drücke dann die rechte Maustaste.
-  </p>
-</div>
+  <div class="explanation">
+    <p>Jede Webseite hat eine Adresse. Siehst Du die Adresse dieser Seite ganz oben in diesem Fenster?  Kopiere
+    sie!
+  </div>
+  <div class="story">
+    <p>Die Adresse dieser Webseite ist <br>
+    <input type="text" id="url-paster-field"></p>
+  </div>
 
-<div class="story">
-  <p>
-  <img src="http://hackasaurus.org/images/goggles/supergirl.png" id="supergirl">
-  Susi surft durchs Web. Mit ihrer Röngten-Brille kann sie alles durchschauen!
-  </p>
-  <p style="clear:both;">&nbsp;</p>
-</div>
+  <div id="du_kannst_surfen" class="story" style="display:none;">
+    <p>Es war einmal ein junger Padawan, der konnte sehr gut surfen.</p>
+  </div>
 
-<div class="explanation">
-  <p>Kopiere <b>die Adresse des Bildes</b> in das Feld hier hinein: <br>
-  <input type="text" id="linker-field"></p>
-</div>
+  <div class="explanation">
+    <p>Und nun die schwierigste Übung: Sieht Du das Bild von Susi unten? Jedes
+    Bild am Web hat eine eigene Adresse.  Wie kann man die Adresse raus finden?
+    Zeige mit der Maus auf das Bild und drücke dann die rechte Maustaste. Dann
+    erscheint ein Menü - finde einen passenden Befehl in diesem Menü!
+    </p>
+  </div>
 
-    <div id="win" style="display: none; clear:both;">
-      <h1>Dein Abzeichen</h1>
-      <img src="http://toolness.github.com/hackasaurus-parable/navigator-badge/navigator-badge.png" id="badge">
-      <p>Ich kann navigieren im Web</p>
-      <!--
-      <p>Gratuliere! 
-        <span class="instructions">Wenn Du dieses Abzeichen veröffentlichen willst, kannnst Du es im "backpack", dem Rucksack für Abzeichen speicher:</span>
-      </p>
-      <form>
-        <input type="text" id="email" placeholder="E-mail Address">
-        <input type="submit" value="Send To Backpack »" id="submit">
-      </form>
-      -->
-      <img src="ajax-loader.gif" id="throbber" style="display: none">
-    </div>
+  <div class="story">
+    <p>
+    <img src="http://hackasaurus.org/images/goggles/supergirl.png" id="supergirl">
+    Susi surft durchs Web. Mit ihrer Röngten-Brille kann sie alles durchschauen!
+    </p>
+    <p style="clear:both;">&nbsp;</p>
+  </div>
+
+  <div class="explanation">
+    <p>Kopiere <b>die Adresse des Bildes</b> in das Feld hier hinein: <br>
+    <input type="text" id="linker-field"></p>
+  </div>
+
+  <div id="win" style="display: none; clear:both;">
+    <h1>Dein Abzeichen</h1>
+    <img src="http://toolness.github.com/hackasaurus-parable/navigator-badge/navigator-badge.png" id="badge">
+    <p>Ich kann navigieren im Web</p>
+    <!--
+    <p>Gratuliere! 
+    <span class="instructions">Wenn Du dieses Abzeichen veröffentlichen willst, kannnst Du es im "backpack", dem Rucksack für Abzeichen speicher:</span>
+    </p>
+    <form>
+      <input type="text" id="email" placeholder="E-mail Address">
+      <input type="submit" value="Send To Backpack »" id="submit">
+    </form>
+    -->
+    <img src="ajax-loader.gif" id="throbber" style="display: none">
+  </div>

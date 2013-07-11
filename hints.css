@@ -15,7 +15,9 @@
   pointer-events: none;
 }
 
-.hint kbd {
+.visible-hint kbd,
+.hint kbd
+{
 	font-family: inherit;
 	display: inline-block;
 	color: black;
@@ -62,6 +64,7 @@
 				); /* W3C */
 }
 	
+.visible-hint	kbd span,
 .hint	kbd span {
 	display: block;
 	padding: 7px 15px 5px 15px;

@@ -102,10 +102,11 @@ function buildPageMods(extraMods) {
 function init() {  
   var bugDisplay = BugDisplay(bugs);
 
-  if (navigator.platform.match(/^Mac/))
+  if (navigator.platform.match(/^Mac/)) {
     $(".non-mac").hide();
-  else
+  } else {
     $(".mac").hide();
+  }
 
   $("#bookmarklet").click(function() {
     $(this).addClass("loading");
