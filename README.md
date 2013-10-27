@@ -1,3 +1,13 @@
+# Webseiten Hacken mit dem Hackasaurus
+
+I've translated this to german for use in coderdojo salzburg
+http://blog.coderdojo-salzburg.at/hackasaurus/
+
+After working with younger kids (8-12) and realized that some
+of them didn't know how to find certain keys, I've added an exercise
+for working with the keyboard.
+
+
 # The Parable of The Hackasaurus
 
 By Atul Varma
